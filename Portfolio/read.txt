@@ -1,0 +1,112 @@
+#Run and Make Stuff
+python-admin startproject/ startapp
+python manage.py runserver
+
+add new app name in the app array in setting.py in root project
+add template path to it in template [] empty section
+
+#URL related
+import "url_call_name/",view.function_name
+
+#inherit url to new app using include
+path("new_app_name/",include(app_name.view.py))
+
+#Function
+def function_name(request)
+    return render(request,"html_page")
+
+#to add a id or something just add a dict={} in views.py section
+dict={}
+return render(request,"/hello")
+
+#make database table with command
+python manage.py migrate
+python manage.py makemigrations "ProjectName"
+python manage.py migrate
+
+#Write a database table
+class Student(models(imported from above).Model):
+    name = models.ForeignKey("Primary table name")
+
+#insert data manually in cmd
+from projectname.models(file where the models are) import class name(Student)
+#to see all record with name add this after class of database
+def __self__(self):
+    return self.first_name(databaseFieldName(which we want to see))
+>>print(Musician(table name).objects.all())
+
+#add data to the table through command pannel
+object = Musician(table name)(first_name:"......",last_name:"........")
+object.save()
+
+#create admin
+add the two models in admin.py file like this
+admin.site.register(class name "Musician")
+python manage.py createsuperuser
+
+#see data from database by passing it on dict={} and content=dict
+from projectname.models(file where the models are) import class name(Student) where the database table is import it in the view where to call it
+make_obj=Musician.objects.order_by('first_name')
+call it on html template {{%...................%}}
+
+
+#django forms implementation
+from django import forms
+class "form class name"/user_name(forms.Form):
+    name = forms.ChaField()
+    email= forms.EmailField()
+#view
+from AppName import form.py file name
+def form(request):
+    form object = forms.formClassName of other file()
+    dict={"name to give in context":form object}
+
+#form submission
+in view.py
+if request.method="POST":
+    newObject=forms.FormClassName(request.POST)
+if newObject.is_valid():
+    attributeName=newObject.cleared_data[form field name]
+    first_name   =  new_form.cleared_data['first_name']
+
+    diction.update{{'first_name':first_name}}
+
+#Validators
+from django.core import validators
+
+def className() and everything normal
+def clear(self):
+    user_email=forms.validators['email']
+if user_email!= user_vmail:
+    raise forms.validatorErrors('Error message')
+##########match email is on view.py page to be passed on diction
+
+#model to direct form
+import model from the project/app here
+class ClassName (forms.ModelForm):
+    class Meta:
+        model = models.Musician #table class name
+        fields="__all__"
+
+#dynamic URL making
+declare a variable in URL.py file and call it in required place with {% url variable name: name of the url in url.py file a path a jai name ta thake %}
+
+#template inheritance
+{% extends appName/.py file name where the template is %}
+{% block block name provided in the html templates %}
+
+#custom filters
+import template from django
+
+makeObject(to inherit from template) = template.Library()
+def function (parameter value):
+    return value
+
+makeObject.filter('filter name to call in other file', upper function name)
+
+
+
+########################################################
+########################################################
+same as in the setting.py file database section providing name,database name etc
+then same migration command and creating super user
